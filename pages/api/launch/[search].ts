@@ -9,7 +9,7 @@ export default async (req, res) => {
 
     res.statusCode = 200
     res.json({ 
-      status: "success",
+      status: 'success',
       data: launches
      })
   }
