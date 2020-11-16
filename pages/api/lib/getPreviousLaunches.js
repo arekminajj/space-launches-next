@@ -1,5 +1,5 @@
 async function getPreviousLaunches(limit, offset) {
-    BASE_URL = 'https://ll.thespacedevs.com/2.0.0';
+    const BASE_URL = 'https://ll.thespacedevs.com/2.0.0';
 
     const result = await fetch(BASE_URL + '/launch/previous?limit=' + limit + '&offset=' + offset, 
         { method: 'GET' });
