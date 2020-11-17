@@ -1,5 +1,11 @@
-export default (req, res) => {
+import getAllSpacestations from '../lib/getAllSpacestations'
+
+export default async (req, res) => {
+    const spacestations = await getAllSpacestations();
+
     res.statusCode = 200
-    res.json({ name: 'John Doe' })
+    res.json({ 
+      status: 'success',
+      data: spacestations })
   }
   
