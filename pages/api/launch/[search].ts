@@ -5,7 +5,7 @@ export default async (req, res) => {
       query: { search },
     } = req
 
-    const launches = await getLaunchesBySearch('100', '0', 'Vega');
+    const launches = await getLaunchesBySearch('100', '0', search);
 
     res.statusCode = 200
     res.json({ 
