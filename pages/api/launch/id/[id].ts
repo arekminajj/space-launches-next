@@ -1,4 +1,4 @@
-import getLaunchById from '../lib/getLaunchById';
+import getLaunchById from '../../lib/getLaunchById';
 
 export default async (req, res) => {
     const {
@@ -7,6 +7,7 @@ export default async (req, res) => {
 
     const launch = await getLaunchById(id);
 
+    console.log("hello from [id].ts")
     res.statusCode = 200
     res.json({ 
       status: 'success',

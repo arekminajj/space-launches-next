@@ -1,5 +1,5 @@
 async function getAgencyById(id) {
-    const BASE_URL = 'https://ll.thespacedevs.com/2.0.0';
+    const BASE_URL = process.env.API_URL;
 
     const result = await fetch(BASE_URL + '/agencies/' + id, 
         { method: 'GET' });
