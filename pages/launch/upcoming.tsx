@@ -42,6 +42,10 @@ export default function Upcoming({launches}) {
                           </Col>                  
       )})}
       </Row>
+      <div style={{height:'10px'}}></div>
+      <div style={{height: '50px'}}>
+        <h5 className="text-center">Made with ❤️ and <a href='https://nextjs.org/' target="_blank"> Next.js </a> by <a target='_blank' href="https://github.com/arekminajj"> Arekminajj </a></h5>
+      </div>
     </Container>
   )
 }
