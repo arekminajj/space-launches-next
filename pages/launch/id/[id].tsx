@@ -47,7 +47,7 @@ export default function Launch({launch}) {
           <a href={launch.rocket.configuration.manufacturer.info_url} target="_blank">
             <h4>{launch.rocket.configuration.manufacturer.name}</h4>
           </a>
-          <h5>{launch.rocket.configuration.manufacturer.country_code}</h5>
+          <h5>Country: {launch.rocket.configuration.manufacturer.country_code}</h5>
           <br/>
           <h1 className="text-center">Mission</h1>
           <h3>{launch.mission.name}</h3>
