@@ -24,7 +24,27 @@ export async function getServerSideProps(context) {
     return {
       props: {launch},
     }
+}
+
+// Mission details data is sometimes null,
+// so rendering separately to avoid 'property is null' error
+function RenderMissionDetails(props) {
+  const launch = props.launch;
+  if(launch.mission) {
+    return (
+      <div>
+        <h1 className="text-center">Mission</h1>
+        <h3>{launch.mission.name}</h3>
+        <h5>{launch.mission.description}</h5>
+        <h6>{launch.mission.type}</h6>
+        <h6>{launch.mission.orbit.name}</h6>
+      </div>
+    )
   }
+  else {
+    return null;
+  }
+}
 
 export default function Launch({launch}) {
   return (
@@ -49,11 +69,7 @@ export default function Launch({launch}) {
           </a>
           <h5>Country: {launch.rocket.configuration.manufacturer.country_code}</h5>
           <br/>
-          <h1 className="text-center">Mission</h1>
-          <h3>{launch.mission.name}</h3>
-          <h5>{launch.mission.description}</h5>
-          <h6>{launch.mission.type}</h6>
-          <h6>{launch.mission.orbit.name}</h6>
+          <RenderMissionDetails launch={launch} />
           <h1 className="text-center">Pad</h1>
           <h5>{launch.pad.name}</h5>
           <Image style={{maxHeight: '500px'}} src={launch.pad.location.map_image} thumbnail />
