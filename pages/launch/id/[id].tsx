@@ -51,7 +51,6 @@ export default function Launch({launch}) {
     <Container>
         <h1 style={{textAlign: "center"}}>{launch.name}</h1>
         <h5>Window start: {launch.window_start}</h5>
-        
         <Link href={"/agency/id/" + launch.launch_service_provider.id}>
           <h5 style={{textAlign: "right"}}>{launch.launch_service_provider.name}</h5>
         </Link>
