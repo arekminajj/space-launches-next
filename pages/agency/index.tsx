@@ -35,7 +35,7 @@ export default function Index({agencies}) {
                               {d.country_code} {d.founding_year} <br/>
                               {d.description}
                               </Card.Text>
-                              <Link href={"agency/id/" + d.id}>
+                              <Link href={"agency/" + d.id}>
                                 <Button variant="primary">Details</Button>
                               </Link>
                             </Card.Body>
@@ -45,6 +45,10 @@ export default function Index({agencies}) {
             )
         })}
         </Row>
+        <div style={{height:'10px'}}></div>
+      <div style={{height: '50px'}}>
+        <h5 className="text-center">Made with ❤️ and <a href='https://nextjs.org/' target="_blank"> Next.js </a> by <a target='_blank' href="https://github.com/arekminajj"> Arekminajj </a></h5>
+      </div>
     </Container>
   )
 }
