@@ -24,7 +24,7 @@ export async function getServerSideProps(context) {
        previousPage = 1;
     }
     const limit = 9;
-    const offset = pageNumber * 10 - 10;
+    const offset = pageNumber * 9 - 9;
     
     const res = await fetch(process.env.BASE_URL
       + '/api/astronaut?limit=' + limit
