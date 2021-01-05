@@ -1,9 +1,11 @@
 import getAllAstronauts from '../lib/getAllAstronauts';
 
 export default async (req, res) => {
-    const astronauts = await getAllAstronauts('99999', '0');
-    //TILL PAGINATION IS NOT IMPLEMENTED
-    //GONNA KEEP IT LIKE THAT
+  const {
+    query: { limit, offset, search },
+  } = req
+
+    const astronauts = await getAllAstronauts(limit, offset, search);
 
     res.statusCode = 200
     res.json({ 

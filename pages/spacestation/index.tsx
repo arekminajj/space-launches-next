@@ -17,7 +17,7 @@ export async function getStaticProps(context) {
   }
 
 
-export default function Upcoming({spacestations}) {
+export default function Index({spacestations}) {
   return (
     <Container>
         <Row>
