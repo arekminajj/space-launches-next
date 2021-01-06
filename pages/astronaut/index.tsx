@@ -93,7 +93,10 @@ export default function Index({astronauts, pageNumber, nextPage, previousPage}) 
                 <Card.Title>{d.name}</Card.Title>
                 <Card.Text>
                 <RenderBirthAndDeathDates astronaut={d}/>
-                {d.bio}
+                {d.bio} <br /> <br />
+                <Link href={'/astronaut/' + d.id}>
+                  <Button variant="primary">Details</Button>
+                </Link>
                 </Card.Text>
               </Card.Body>
             </Card>

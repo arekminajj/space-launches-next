@@ -54,6 +54,10 @@ export default function Astronaut({astronaut}) {
             <p>{astronaut.bio}</p>
           </Col>
       </Row>
+      <div style={{height:'10px'}}></div>
+      <div style={{height: '50px'}}>
+        <h5 className="text-center footer">Made with ❤️ and <a href='https://nextjs.org/' target="_blank"> Next.js </a> by <a target='_blank' href="https://github.com/arekminajj"> Arekminajj </a></h5>
+      </div>
     </Container>
   )
 }
