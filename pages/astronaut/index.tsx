@@ -44,7 +44,7 @@ function RenderBirthAndDeathDates(props) {
   const astronaut = props.astronaut;
   if(astronaut.date_of_death==null) {
     return(
-      <b>{astronaut.date_of_birth} - present <br/> </b> 
+      <b>Born: {astronaut.date_of_birth}<br/> </b> 
     )
   }
   else {
