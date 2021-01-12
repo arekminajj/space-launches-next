@@ -13,6 +13,7 @@ import Form from 'react-bootstrap/Form';
 
 export async function getServerSideProps(context) {
   const search = context.query.search;
+  // pagination stuff
   let pageNumber = context.query.page;
   if (pageNumber < 1) { pageNumber = 1; }
   const nextPage: number = parseInt(pageNumber) + 1;
