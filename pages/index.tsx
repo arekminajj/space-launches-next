@@ -12,8 +12,12 @@ import Card from 'react-bootstrap/Card';
 export default function Home() {
   return (
     <Container>
+      <Head>
+        <title>PeopleInSpace</title>
+        <meta name="description" content="Check out upcoming and previous space launches, agencies, astronauts, events, spacestations and more!" />
+      </Head>
       <div style={{ height: '15px' }}></div>
-      <h1 className="text-center">Space launches</h1>
+      <h1 className="text-center">PeopleInSpace</h1>
       <div style={{ height: '15px' }}></div>
       <Row>
         <Col>

@@ -8,29 +8,29 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
 export async function getServerSideProps(context) {
-    const res = await fetch(process.env.BASE_URL + '/api/launch/id/' + context.params.id);
-    const data = await res.json();
-    const launch = await data.data;
-    
-    const date = new Date(launch.window_start)
-    launch.window_start = date.getMonth() + '-' + date.getDay() + '-' + date.getFullYear();
+  const res = await fetch(process.env.BASE_URL + '/api/launch/id/' + context.params.id);
+  const data = await res.json();
+  const launch = await data.data;
 
-    if (!launch) {
-        return {
-          notFound: true,
-        }
-      }
+  const date = new Date(launch.window_start)
+  launch.window_start = date.getMonth() + '-' + date.getDay() + '-' + date.getFullYear();
 
+  if (!launch) {
     return {
-      props: {launch},
+      notFound: true,
     }
+  }
+
+  return {
+    props: { launch },
+  }
 }
 
 // Mission details data is sometimes null,
 // so rendering separately to avoid 'property is null' error
 function RenderMissionDetails(props) {
   const launch = props.launch;
-  if(launch.mission) {
+  if (launch.mission) {
     return (
       <div>
         <h1 className="text-center">Mission</h1>
@@ -46,38 +46,41 @@ function RenderMissionDetails(props) {
   }
 }
 
-export default function Launch({launch}) {
+export default function Launch({ launch }) {
   return (
     <Container>
-        <h1 style={{textAlign: "center"}}>{launch.name}</h1>
-        <h5>Window start: {launch.window_start}</h5>
-        <Link href={"/agency/" + launch.launch_service_provider.id}>
-          <a><h5 style={{textAlign: "right"}}>{launch.launch_service_provider.name}</h5></a>
-        </Link>
-        <h5 style={{textAlign: "right"}}>{launch.launch_service_provider.type}</h5>
-        <Row>
-          <Col>
-            <Image style={{maxHeight: "1000px" }} src={launch.image} fluid />
-          </Col>
-          <Col>
+      <Head>
+        <title>PeopleInSpace - {launch.name}</title>
+      </Head>
+      <h1 style={{ textAlign: "center" }}>{launch.name}</h1>
+      <h5>Window start: {launch.window_start}</h5>
+      <Link href={"/agency/" + launch.launch_service_provider.id}>
+        <a><h5 style={{ textAlign: "right" }}>{launch.launch_service_provider.name}</h5></a>
+      </Link>
+      <h5 style={{ textAlign: "right" }}>{launch.launch_service_provider.type}</h5>
+      <Row>
+        <Col>
+          <Image style={{ maxHeight: "1000px" }} src={launch.image} fluid />
+        </Col>
+        <Col>
           <h1 className="text-center">Rocket</h1>
           <h2>{launch.rocket.configuration.name}</h2>
           <h5>{launch.rocket.configuration.description}</h5>
-          <a href={launch.rocket.configuration.manufacturer.info_url || launch.rocket.configuration.manufacturer.wiki_url } target="_blank">
+          <a href={launch.rocket.configuration.manufacturer.info_url || launch.rocket.configuration.manufacturer.wiki_url} target="_blank">
             <h4>{launch.rocket.configuration.manufacturer.name}</h4>
           </a>
           <h5>Country: {launch.rocket.configuration.manufacturer.country_code}</h5>
-          <br/>
+          <br />
           <RenderMissionDetails launch={launch} />
           <h1 className="text-center">Pad</h1>
           <h5>{launch.pad.name}</h5>
-          <Image style={{maxHeight: '500px'}} src={launch.pad.location.map_image} thumbnail />
-          </Col>
-        </Row>
-        <div style={{height:'10px'}}></div>
-        <div style={{height: '50px'}}>
-          <h5 className="text-center">Made with ❤️ and <a href='https://nextjs.org/' target="_blank"> Next.js </a> by <a target='_blank' href="https://github.com/arekminajj"> Arekminajj. </a></h5>
-        </div>
+          <Image style={{ maxHeight: '500px' }} src={launch.pad.location.map_image} thumbnail />
+        </Col>
+      </Row>
+      <div style={{ height: '10px' }}></div>
+      <div style={{ height: '50px' }}>
+        <h5 className="text-center">Made with ❤️ and <a href='https://nextjs.org/' target="_blank"> Next.js </a> by <a target='_blank' href="https://github.com/arekminajj"> Arekminajj. </a></h5>
+      </div>
     </Container>
   )
 }
